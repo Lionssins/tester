@@ -430,7 +430,6 @@
                     } else if (typeof formattedEnd === 'string' && formattedEnd.length <= 5) {
                         if(formattedEnd.length === 4) formattedEnd = '0' + formattedEnd;
                     }
-                    // Menambahkan fallback untuk properti email (jika belum ada/lama)
                     return { ...b, date: formattedDate, start: formattedStart, end: formattedEnd, phone: b.phone || '', email: b.email || '-' };
                 });
                 
@@ -634,12 +633,13 @@
                 if (result.status === 'error') {
                     alert("Gagal menyimpan dari server Google: " + result.message);
                 } else {
-                    alert("Peminjaman Berhasil Dicatat! Email konfirmasi sedang dikirimkan (Tergantung konfigurasi server).");
+                    // ALERT SUKSES DAN TUTUP POPUP (PERBAIKAN DISINI)
+                    alert("Peminjaman Berhasil Dicatat! Email konfirmasi telah dikirimkan ke: " + email);
                     document.getElementById('PeminjamanForm').reset();
                     document.getElementById('bDate').value = date;
                     filterNamesByDivision(); 
                     
-                    viewDaySchedule(date);
+                    closeModal('viewDayModal'); // Menutup Pop-up otomatis
                 }
             } catch (error) { 
                 console.error("Error Sistem:", error); 
