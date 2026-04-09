@@ -118,7 +118,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                        <img src="cyclingroom.jpeg" alt="Cycling Room" class="w-full h-32 object-cover">
+                        <img src="cyclingroom.jpeg" alt="Cycling Room" class="w-full object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-gray-800 text-lg mb-2">Cycling Room</h4>
                             <ul class="text-sm text-gray-600 space-y-1.5">
@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                        <img src="football.jpeg" alt="Football Room" class="w-full h-32 object-cover">
+                        <img src="football.jpeg" alt="Football Room" class="w-full object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-gray-800 text-lg mb-2">FootBall Room</h4>
                             <ul class="text-sm text-gray-600 space-y-1.5">
@@ -227,9 +227,15 @@
                             </div>
                         </div>
                         
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">No. WhatsApp</label>
-                            <input type="tel" id="bPhone" required placeholder="Contoh: 08123456789" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">No. WhatsApp</label>
+                                <input type="tel" id="bPhone" required placeholder="Contoh: 08123456789" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email Pemesan</label>
+                                <input type="email" id="bEmail" required placeholder="email@perusahaan.com" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                            </div>
                         </div>
                         
                         <div>
@@ -304,6 +310,7 @@
                             <th class="p-3 border-b">Ruangan</th>
                             <th class="p-3 border-b">Pemesan</th>
                             <th class="p-3 border-b">No WhatsApp</th>
+                            <th class="p-3 border-b">Email</th>
                             <th class="p-3 border-b text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -318,8 +325,6 @@
         // PASTE LINK WEB APP DARI GOOGLE APPS SCRIPT ANDA DI BAWAH INI:
         // =====================================================================
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRQf7bEQSqw_pKjEafcPETCNo46gA3yzm6N2QTEbfOOq-FxJMPiq12lAoZDFH2YVG7gQ/exec'; 
-        
-        const ADMIN_WA = '62881081371012'; 
 
         let Peminjamans = [];
         let employeesData = []; 
@@ -425,11 +430,12 @@
                     } else if (typeof formattedEnd === 'string' && formattedEnd.length <= 5) {
                         if(formattedEnd.length === 4) formattedEnd = '0' + formattedEnd;
                     }
-                    return { ...b, date: formattedDate, start: formattedStart, end: formattedEnd, phone: b.phone || '' };
+                    // Menambahkan fallback untuk properti email (jika belum ada/lama)
+                    return { ...b, date: formattedDate, start: formattedStart, end: formattedEnd, phone: b.phone || '', email: b.email || '-' };
                 });
                 
                 renderCalendar();
-                renderAvailabilityClock(); // Memanggil render jam saat data selesai dimuat
+                renderAvailabilityClock(); 
             } catch (error) {
                 document.getElementById('calendar').innerHTML = `
                 <div class='col-span-7 text-center py-10 text-red-600 bg-red-50 border border-red-200 rounded p-6'>
@@ -583,6 +589,7 @@
             const namaInput = document.getElementById('bName').value;
             const divisiInput = document.getElementById('bDivisi').value;
             const phone = document.getElementById('bPhone').value;
+            const email = document.getElementById('bEmail').value;
             const room = document.getElementById('bRoom').value;
             const date = document.getElementById('bDate').value;
             const start = document.getElementById('bStart').value;
@@ -608,11 +615,11 @@
             btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Memproses...";
             btn.disabled = true;
 
-            const newPeminjaman = { id: Date.now().toString(), name, room, date, start, end, phone };
+            const newPeminjaman = { id: Date.now().toString(), name, room, date, start, end, phone, email };
             
             Peminjamans.push(newPeminjaman);
             renderCalendar();
-            renderAvailabilityClock(); // Update jam setelah simpan
+            renderAvailabilityClock(); 
 
             try {
                 const response = await fetch(SCRIPT_URL, {
@@ -627,17 +634,12 @@
                 if (result.status === 'error') {
                     alert("Gagal menyimpan dari server Google: " + result.message);
                 } else {
-                    alert("Peminjaman Berhasil Dicatat!");
+                    alert("Peminjaman Berhasil Dicatat! Email konfirmasi sedang dikirimkan (Tergantung konfigurasi server).");
                     document.getElementById('PeminjamanForm').reset();
                     document.getElementById('bDate').value = date;
                     filterNamesByDivision(); 
                     
                     viewDaySchedule(date);
-
-                    const waText = `Halo Admin GA,%0A%0ASaya melakukan Peminjaman ruangan:%0A*Nama:* ${namaInput}%0A*Divisi:* ${divisiInput}%0A*No WA:* ${phone}%0A*Ruangan:* ${room}%0A*Waktu:* ${date}, ${start} - ${end} WIB`;
-                    setTimeout(() => {
-                        window.open(`https://wa.me/${ADMIN_WA}?text=${waText}`, '_blank');
-                    }, 500);
                 }
             } catch (error) { 
                 console.error("Error Sistem:", error); 
@@ -667,7 +669,7 @@
             tbody.innerHTML = '';
             
             if(Peminjamans.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center p-6 text-gray-500">Tidak ada data Peminjaman di dalam sistem</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center p-6 text-gray-500">Tidak ada data Peminjaman di dalam sistem</td></tr>`;
                 return;
             }
 
@@ -680,6 +682,7 @@
                     <td class="p-3"><span class="${getRoomClass(b.room)} px-2.5 py-1 rounded text-xs whitespace-nowrap font-medium">${b.room}</span></td>
                     <td class="p-3 text-gray-800">${b.name}</td>
                     <td class="p-3 text-gray-800">${waCell}</td>
+                    <td class="p-3 text-gray-800 break-all">${b.email || '-'}</td>
                     <td class="p-3 text-center">
                         <button onclick="deletePeminjaman(this, '${b.id}')" class="bg-red-50 text-red-500 hover:bg-red-600 hover:text-white p-2 rounded transition shadow-sm border border-red-100 hover:border-red-600" title="Hapus Jadwal">
                             <i class="fas fa-trash-alt"></i>
@@ -709,7 +712,7 @@
                         Peminjamans = Peminjamans.filter(b => b.id != id);
                         renderAdminTable();
                         renderCalendar();
-                        renderAvailabilityClock(); // Update jam setelah hapus
+                        renderAvailabilityClock(); 
                         
                         if(document.getElementById('viewDayModal').style.display === 'flex'){
                            document.getElementById('viewDayModal').style.display = 'none';
@@ -729,10 +732,11 @@
         }
 
         function downloadSpreadsheet() {
-            let csv = "Tanggal,Mulai,Selesai,Ruangan,Pemesan,No WhatsApp\n";
+            let csv = "Tanggal,Mulai,Selesai,Ruangan,Pemesan,No WhatsApp,Email\n";
             Peminjamans.forEach(b => { 
                 let phoneSafe = b.phone ? b.phone.toString() : "";
-                csv += `${b.date},${b.start},${b.end},${b.room},${b.name.replace(/,/g, '')},${phoneSafe}\n`; 
+                let emailSafe = b.email ? b.email.toString() : "";
+                csv += `${b.date},${b.start},${b.end},${b.room},${b.name.replace(/,/g, '')},${phoneSafe},${emailSafe}\n`; 
             });
             const link = document.createElement("a");
             link.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
@@ -748,7 +752,6 @@
             }
         }
 
-        // --- FUNGSI TIMELINE JAM KETERSEDIAAN ---
         function renderAvailabilityClock() {
             const date = document.getElementById('checkDate').value;
             const room = document.getElementById('checkRoom').value;
@@ -784,7 +787,6 @@
                     block.title = `Dipinjam oleh: ${b.name} (${b.start} - ${b.end})`;
                     
                     if (widthPct > 8) {
-                        // Memisahkan nama dari divisinya agar lebih rapih di tampilan
                         let shortName = b.name.includes('(') ? b.name.split(' (')[0] : b.name;
                         block.innerHTML = `
                             <span>${b.start}-${b.end}</span>
