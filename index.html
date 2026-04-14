@@ -41,6 +41,7 @@
 
     <div class="w-full max-w-screen-2xl mx-auto p-4 mt-2">
         <div class="bg-white p-4 md:p-6 rounded-xl shadow-md w-full">
+            
             <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4 border-b pb-4">
                 <h2 class="text-2xl font-bold text-gray-700 flex items-center gap-2">
                     <i class="far fa-calendar-alt text-blue-600"></i> JADWAL KETERSEDIAAN
@@ -60,8 +61,7 @@
                 <div class="text-red-500">Min</div><div>Sen</div><div>Sel</div><div>Rab</div><div>Kam</div><div>Jum</div><div>Sab</div>
             </div>
             
-            <div id="calendar" class="grid grid-cols-7 gap-1 text-sm bg-gray-100 border border-gray-200 rounded-lg p-1">
-            </div>
+            <div id="calendar" class="grid grid-cols-7 gap-1 text-sm bg-gray-100 border border-gray-200 rounded-lg p-1"></div>
             
             <div class="mt-6 flex flex-wrap gap-4 text-xs md:text-sm justify-center font-semibold bg-gray-50 p-3 rounded-lg border border-gray-200">
                 <span class="flex items-center gap-2"><div class="w-4 h-4 bg-cycling rounded-full shadow-sm"></div> Cycling</span>
@@ -93,16 +93,10 @@
                     </div>
                 </div>
 
-                <div class="relative w-full h-14 md:h-16 bg-green-100 rounded-lg border border-green-300 overflow-hidden" id="timeClockContainer">
-                    </div>
+                <div class="relative w-full h-14 md:h-16 bg-green-100 rounded-lg border border-green-300 overflow-hidden" id="timeClockContainer"></div>
                 
                 <div class="flex justify-between text-[10px] md:text-xs text-gray-500 mt-2 font-bold px-1">
-                    <span>08:00</span>
-                    <span>10:00</span>
-                    <span>12:00</span>
-                    <span>14:00</span>
-                    <span>16:00</span>
-                    <span>18:00</span>
+                    <span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span><span>18:00</span>
                 </div>
 
                 <div class="flex gap-6 mt-4 text-xs md:text-sm justify-center font-semibold">
@@ -115,10 +109,9 @@
                 <h3 class="font-bold text-gray-700 mb-6 flex items-center gap-2 text-lg">
                     <i class="fas fa-info-circle text-blue-600"></i> SPESIFIKASI & FASILITAS RUANGAN
                 </h3>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                        <img src="cyclingroom.jpeg" alt="Cycling Room" class="w-full object-cover">
+                        <img src="cyclingroom.jpeg" alt="Cycling Room" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-gray-800 text-lg mb-2">Cycling Room</h4>
                             <ul class="text-sm text-gray-600 space-y-1.5">
@@ -127,9 +120,8 @@
                             </ul>
                         </div>
                     </div>
-
                     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                        <img src="football.jpeg" alt="Football Room" class="w-full object-cover">
+                        <img src="football.jpeg" alt="Football Room" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-gray-800 text-lg mb-2">FootBall Room</h4>
                             <ul class="text-sm text-gray-600 space-y-1.5">
@@ -138,9 +130,8 @@
                             </ul>
                         </div>
                     </div>
-
                     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                        <img src="runningroom.jpeg">
+                        <img src="runningroom.jpeg" alt="Running Room" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-gray-800 text-lg mb-2">Running Room</h4>
                             <ul class="text-sm text-gray-600 space-y-1.5">
@@ -149,9 +140,8 @@
                             </ul>
                         </div>
                     </div>
-
                     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                        <img src="athletic.jpeg">
+                        <img src="athletic.jpeg" alt="Athletic Room" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-gray-800 text-lg mb-2">Athletic Room</h4>
                             <ul class="text-sm text-gray-600 space-y-1.5">
@@ -160,9 +150,8 @@
                             </ul>
                         </div>
                     </div>
-
                     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                        <img src="basketball.jpeg">
+                        <img src="basketball.jpeg" alt="Basketball Room" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-gray-800 text-lg mb-2">Basketball Room</h4>
                             <ul class="text-sm text-gray-600 space-y-1.5">
@@ -173,11 +162,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <div id="viewDayModal" style="display: none; z-index: 9999;" class="fixed inset-0 bg-black bg-opacity-60 items-center justify-center p-4">
+    <div id="viewDayModal" style="display: none; z-index: 9900;" class="fixed inset-0 bg-black bg-opacity-60 items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-2xl w-full max-w-5xl flex flex-col max-h-[95vh] overflow-hidden">
             <div class="bg-blue-800 text-white p-4 flex justify-between items-center shadow-md">
                 <h3 class="font-bold text-lg md:text-xl flex items-center gap-2" id="viewDayTitle">
@@ -315,9 +303,65 @@
         </div>
     </div>
 
+    <div id="otpModal" style="display: none; z-index: 10000;" class="fixed inset-0 bg-black bg-opacity-70 items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm overflow-hidden p-6 text-center">
+            <h3 class="font-bold text-xl text-gray-800 mb-2">Verifikasi Keamanan</h3>
+            <p class="text-sm text-gray-600 mb-4">Kami telah mengirimkan 6-digit OTP ke email <strong id="otpEmailDisplay"></strong>. Masukkan kode tersebut untuk melanjutkan.</p>
+            <input type="text" id="otpInput" maxlength="6" placeholder="B C G D E F (Contoh: 123456)" class="w-full border-2 border-gray-300 rounded-lg p-3 text-center text-2xl tracking-widest font-bold outline-none focus:border-blue-500 mb-4">
+            <div class="flex gap-2">
+                <button onclick="closeModal('otpModal')" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 rounded-lg transition">Batal</button>
+                <button onclick="verifyAndProceed()" id="btnVerifyOTP" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition shadow">Verifikasi</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editModal" style="display: none; z-index: 10000;" class="fixed inset-0 bg-black bg-opacity-70 items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden p-6">
+            <h3 class="font-bold text-xl text-blue-700 border-b pb-2 mb-4"><i class="fas fa-edit"></i> Edit Peminjaman</h3>
+            <form id="EditPeminjamanForm" onsubmit="submitEdit(event)" class="space-y-4">
+                <input type="hidden" id="eId">
+                <input type="hidden" id="eEmail">
+                <input type="hidden" id="eName">
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Pilih Ruangan</label>
+                    <select id="eRoom" required class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 transition">
+                        <option value="Cycling Room">Cycling Room</option>
+                        <option value="FootBall Room">FootBall Room</option>
+                        <option value="Running Room">Running Room</option>
+                        <option value="Athletic Room">Athletic Room</option>
+                        <option value="Basketball Room">Basketball Room</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal</label>
+                    <input type="date" id="eDate" required class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 transition">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Jam Mulai</label>
+                        <input type="time" id="eStart" required class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Jam Selesai</label>
+                        <input type="time" id="eEnd" required class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 transition">
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 mt-6">
+                    <button type="button" onclick="closeModal('editModal')" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 rounded-lg transition">Batal</button>
+                    <button type="submit" id="btnSaveEdit" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition shadow">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         // =====================================================================
         // PASTE LINK WEB APP DARI GOOGLE APPS SCRIPT ANDA DI BAWAH INI:
+        // PENTING: Gunakan link hasil "New Deployment" setelah kode Apps Script diubah
         // =====================================================================
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdFbPZ5MpY-rmgGH_YqiGv5mAF33-7SS4uSeRrJ2eV7tfRUSYT7Fc1HUUHYto1O7Bd/exec'; 
 
@@ -331,14 +375,11 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             initControls();
-            
-            // Set default date untuk timeline ketersediaan
             const todayStr = new Date().toISOString().split('T')[0];
             const checkDateInput = document.getElementById('checkDate');
             if(checkDateInput) {
                 checkDateInput.value = todayStr;
             }
-
             document.getElementById('calendar').innerHTML = "<div class='col-span-7 text-center py-20 text-blue-600 font-bold text-lg'><i class='fas fa-spinner fa-spin text-3xl mb-3'></i><br>Menghubungkan ke Database...</div>";
             loadPeminjamans();
         });
@@ -346,7 +387,6 @@
         function initControls() {
             const mSelect = document.getElementById('monthSelect');
             const ySelect = document.getElementById('yearSelect');
-
             mSelect.value = currentMonth;
             ySelect.innerHTML = "";
             for(let y = currentYear - 1; y <= currentYear + 2; y++) {
@@ -375,7 +415,7 @@
         }
 
         async function loadPeminjamans() {
-            if (SCRIPT_URL === 'PASTE_LINK_ANDA_DI_SINI' || SCRIPT_URL === '') {
+            if (!SCRIPT_URL || SCRIPT_URL.includes('PASTE_LINK_ANDA_DI_SINI')) {
                 document.getElementById('calendar').innerHTML = `<div class='col-span-7 text-center py-6 text-red-600 font-bold bg-red-50 border border-red-200 rounded p-4'>❌ ANDA LUPA MEMASUKKAN SCRIPT_URL DI KODE HTML.</div>`;
                 return;
             }
@@ -535,7 +575,6 @@
 
         function viewDaySchedule(dateStr) {
             document.getElementById('bDate').value = dateStr;
-
             const modalTitle = document.getElementById('viewDayTitle');
             const content = document.getElementById('viewDayContent');
             
@@ -566,6 +605,10 @@
                             <div class="flex items-center gap-3"><i class="fas fa-door-open text-blue-500 w-5 text-center text-lg"></i> <span class="font-semibold flex items-center gap-2">${b.room} <span class="px-2 py-0.5 rounded text-[10px] ${getRoomClass(b.room)}">Dipesan</span></span></div>
                             <div class="flex items-center gap-3"><i class="far fa-clock text-orange-500 w-5 text-center text-lg"></i> <span class="font-medium">${b.start} - ${b.end} WIB</span></div>
                             <div class="flex items-center gap-3"><i class="fas fa-phone-alt text-green-500 w-5 text-center text-lg"></i> ${generateWaLinkHTML(b.phone)}</div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex gap-2 justify-end">
+                            <button onclick="requestVerification('edit', '${b.id}', '${b.email}')" class="text-xs bg-yellow-100 text-yellow-700 hover:bg-yellow-200 px-3 py-1.5 rounded font-bold shadow-sm transition"><i class="fas fa-edit"></i> Edit</button>
+                            <button onclick="requestVerification('cancel', '${b.id}', '${b.email}')" class="text-xs bg-red-100 text-red-600 hover:bg-red-200 px-3 py-1.5 rounded font-bold shadow-sm transition"><i class="fas fa-times"></i> Batalkan</button>
                         </div>
                     </div>`;
                 });
@@ -628,13 +671,12 @@
                 if (result.status === 'error') {
                     alert("Gagal menyimpan dari server Google: " + result.message);
                 } else {
-                    // ALERT SUKSES DAN TUTUP POPUP (PERBAIKAN DISINI)
                     alert("Peminjaman Berhasil Dicatat! Email konfirmasi telah dikirimkan ke: " + email);
                     document.getElementById('PeminjamanForm').reset();
                     document.getElementById('bDate').value = date;
                     filterNamesByDivision(); 
                     
-                    closeModal('viewDayModal'); // Menutup Pop-up otomatis
+                    closeModal('viewDayModal'); 
                 }
             } catch (error) { 
                 console.error("Error Sistem:", error); 
@@ -645,6 +687,178 @@
             btn.disabled = false;
         }
 
+        // ==========================================
+        // FITUR OTP, EDIT, DAN CANCEL UNTUK USER
+        // ==========================================
+        let pendingAction = null; 
+        let pendingBookingId = null;
+        let pendingEmail = null;
+
+        async function requestVerification(action, id, email) {
+            if (!email || email === '-') {
+                alert("Pemesanan ini tidak memiliki data email. Silakan hubungi Admin GA untuk perubahan.");
+                return;
+            }
+            
+            pendingAction = action;
+            pendingBookingId = id;
+            pendingEmail = email;
+
+            alert("Memproses permintaan... Sistem sedang mengirim kode OTP ke email Anda.");
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: "requestOTP", email: email })
+                });
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    document.getElementById('otpEmailDisplay').innerText = email;
+                    document.getElementById('otpInput').value = '';
+                    document.getElementById('otpModal').style.display = 'flex';
+                } else {
+                    alert("Gagal mengirim OTP: " + result.message);
+                }
+            } catch (error) {
+                alert("Gangguan jaringan saat mengirim OTP.");
+            }
+        }
+
+        async function verifyAndProceed() {
+            const otp = document.getElementById('otpInput').value;
+            if(!otp || otp.length < 6) {
+                alert("Masukkan 6 digit kode OTP."); return;
+            }
+
+            const btn = document.getElementById('btnVerifyOTP');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Memverifikasi..."; btn.disabled = true;
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: "verifyOTP", email: pendingEmail, otp: otp })
+                });
+                const result = await response.json();
+
+                if(result.status === 'success') {
+                    closeModal('otpModal');
+                    if (pendingAction === 'cancel') {
+                        executeCancel();
+                    } else if (pendingAction === 'edit') {
+                        showEditModal();
+                    }
+                } else {
+                    alert("Kode OTP Salah atau telah Kadaluarsa!");
+                }
+            } catch(e) {
+                alert("Gangguan jaringan saat verifikasi.");
+            } finally {
+                btn.innerHTML = originalText; btn.disabled = false;
+            }
+        }
+
+        async function executeCancel() {
+            if(!confirm("Anda yakin ingin membatalkan pesanan ini?")) return;
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: "cancel", id: pendingBookingId, email: pendingEmail })
+                });
+                const result = await response.json();
+                
+                if(result.status === 'success') {
+                    alert("Pembatalan Berhasil. Notifikasi telah dikirim ke email Anda.");
+                    Peminjamans = Peminjamans.filter(b => b.id != pendingBookingId);
+                    renderCalendar();
+                    closeModal('viewDayModal');
+                    renderAvailabilityClock();
+                }
+            } catch(e) {
+                alert("Gagal membatalkan pemesanan.");
+            }
+        }
+
+        function showEditModal() {
+            const b = Peminjamans.find(x => x.id == pendingBookingId);
+            if(!b) return;
+
+            document.getElementById('eId').value = b.id;
+            document.getElementById('eName').value = b.name;
+            document.getElementById('eEmail').value = b.email;
+            document.getElementById('eRoom').value = b.room.replace(' (Dipesan)', '').trim();
+            document.getElementById('eDate').value = b.date;
+            document.getElementById('eStart').value = b.start;
+            document.getElementById('eEnd').value = b.end;
+
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        async function submitEdit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnSaveEdit');
+            btn.innerHTML = "Menyimpan..."; btn.disabled = true;
+
+            const updatedBooking = {
+                id: document.getElementById('eId').value,
+                name: document.getElementById('eName').value,
+                email: document.getElementById('eEmail').value,
+                room: document.getElementById('eRoom').value,
+                date: document.getElementById('eDate').value,
+                start: document.getElementById('eStart').value,
+                end: document.getElementById('eEnd').value,
+                phone: Peminjamans.find(x => x.id == document.getElementById('eId').value).phone 
+            };
+
+            let clash = Peminjamans.find(b => 
+                b.id != updatedBooking.id &&
+                b.date === updatedBooking.date && b.room === updatedBooking.room && 
+                ((updatedBooking.start >= b.start && updatedBooking.start < b.end) || (updatedBooking.end > b.start && updatedBooking.end <= b.end) || (updatedBooking.start <= b.start && updatedBooking.end >= b.end))
+            );
+
+            if(clash) {
+                alert(`Gagal! ${updatedBooking.room} sudah dipinjam pada jam tersebut oleh ${clash.name}`);
+                btn.innerHTML = "Simpan Perubahan"; btn.disabled = false;
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: "edit", booking: updatedBooking })
+                });
+                const result = await response.json();
+                
+                if(result.status === 'success') {
+                    alert("Perubahan Berhasil Disimpan. Notifikasi telah dikirim ke email Anda.");
+                    const index = Peminjamans.findIndex(x => x.id == updatedBooking.id);
+                    if(index !== -1) Peminjamans[index] = updatedBooking;
+                    
+                    renderCalendar();
+                    closeModal('editModal');
+                    closeModal('viewDayModal');
+                    renderAvailabilityClock();
+                }
+            } catch(error) {
+                alert("Gagal menyimpan perubahan.");
+            } finally {
+                btn.innerHTML = "Simpan Perubahan"; btn.disabled = false;
+            }
+        }
+
+        // ==========================================
+        // FUNGSI ADMIN GA
+        // ==========================================
         function showAdminLogin() { document.getElementById('adminModal').style.display = 'flex'; }
         
         function processAdminLogin() {
@@ -739,6 +953,9 @@
             link.click();
         }
 
+        // ==========================================
+        // UTILITIES VISUAL & DOM
+        // ==========================================
         window.closeModal = function(id) { document.getElementById(id).style.display = 'none'; }
         
         window.onclick = function(event) {
@@ -788,7 +1005,6 @@
                             <span class="text-[9px] font-normal truncate w-full px-1 text-center mt-0.5">${shortName}</span>
                         `;
                     }
-
                     container.appendChild(block);
                 }
             });
