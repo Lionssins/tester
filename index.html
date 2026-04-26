@@ -862,7 +862,13 @@
         function showAdminLogin() { document.getElementById('adminModal').style.display = 'flex'; }
         
         function processAdminLogin() {
-            if(document.getElementById('admUser').value === 'Admin' && document.getElementById('admPass').value === 'AdminGA') {
+            // Mengambil input dari user lalu mengkonversinya ke format Base64 (btoa)
+            const inputUser = btoa(document.getElementById('admUser').value);
+            const inputPass = btoa(document.getElementById('admPass').value);
+
+            // 'QWRtaW4=' adalah hasil konversi Base64 untuk kata "Admin"
+            // 'QWRtaW4xMjM=' adalah hasil konversi Base64 untuk kata "Admin123"
+            if(inputUser === 'QWRtaW4=' && inputPass === 'QWRtaW4xMjM=') {
                 closeModal('adminModal');
                 document.getElementById('admUser').value = '';
                 document.getElementById('admPass').value = '';
